@@ -63,18 +63,15 @@ cursor:pointer;
 
 /* HOME */
 .cat-card{
-height:500px;
-width:330px;
-border-radius:20px;
+height:100vh;
+width:100%;
+border-radius:0;
 overflow:hidden;
-cursor:pointer;
-}
-.cat-card img{
+}.cat-card img{
 width:100%;
 height:100%;
-cursor:pointer;
 object-fit:cover;
-border-radius:5px;
+display: block;
 
   
 }
@@ -654,6 +651,7 @@ msg+=`%0ATotal: KES ${total}%0AAddress: ${address.value}%0ANotes: ${notes.value}
   
 
 window.open(`https://wa.me/254713802224?text=${msg}`,'_blank');
+
 
   alert("Order Sent Successfully!");
 
