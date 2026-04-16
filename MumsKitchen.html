@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Ma's Organics</title>
+<link rel="icon" href="IMAGES/Logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://googleapis.com" rel="stylesheet">
+<link href="https://googleapis.com" rel="stylesheet">
+
+<style>
+:root{
+--gold:linear-gradient(135deg,#d4af37,#f5e6a6);
+--bg:#0a0a0a;
+--card:#141414;
+}
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:white;
+}
+
+/* HEADER */
+
+
+.logo{
+font-family:'Cinzel';
+font-size:1.8rem;
+background:linear-gradient(180deg,#f5e6a6,#d4af37,#7a5a16);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+position:relative;
+}
+
+.logo::after{
+content:"";
+display:block;
+margin:6px auto 0;
+width:70%;
+height:1px;
+background:linear-gradient(90deg,transparent,#d4af37,transparent);
+}
+
+/* VIEWS */
+.view{display:none;padding:20px;}
+.active{display:block;}
+
+/* BACK BUTTON */
+.back{
+display:inline-block;
+margin-bottom:15px;
+padding:10px 18px;
+border-radius:30px;
+border:1px solid rgba(212,175,55,0.4);
+color:#f5e6a6;
+cursor:pointer;
+}
+
+/* HOME */
+.cat-card{
+height:500px;
+width:330px;
+border-radius:20px;
+overflow:hidden;
+cursor:pointer;
+}
+.cat-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+/* PRODUCT */
+.card{
+background:var(--card);
+border-radius:15px;
+padding:10px;
+}
+
+.card img{
+width:100%;
+height:110px;
+border-radius:10px;
+object-fit:cover;
+cursor:pointer;
+}
+
+/* CART */
+.cart-card{
+display:flex;
+gap:10px;
+background:#111;
+padding:10px;
+border-radius:12px;
+margin-bottom:10px;
+align-items:center;
+}
+
+.cart-card img{
+width:100px;
+height:90px;
+border-radius:10px;
+object-fit:cover;
+cursor:pointer;
+}
+
+.cart-actions button,
+.qty button,
+#detail button{
+
+width:34px;
+height:34px;
+
+border-radius:50%;
+border:1px solid rgba(212,175,55,0.6);
+
+background:transparent;
+color:#f5e6a6;
+
+font-size:16px;
+font-weight:500;
+
+cursor:pointer;
+transition:all 0.25s ease;
+}
+
+/* HOVER (this is what makes it feel premium) */
+.cart-actions button:hover,
+.qty button:hover,
+#detail button:hover{
+
+background:linear-gradient(135deg,#d4af37,#f5e6a6);
+color:black;
+
+transform:scale(1.1);
+box-shadow:0 0 10px rgba(212,175,55,0.4);
+}
+
+/* BUTTON */
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:30px;
+background:var(--gold);
+font-weight:bold;
+cursor:pointer;
+}
+
+/* FLOAT CART */
+.float{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:var(--gold);
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.badge{
+position:absolute;
+top:-5px;
+right:-5px;
+background:red;
+color:white;
+font-size:12px;
+padding:3px 6px;
+border-radius:50%;
+}
+
+/* DETAIL */
+#detail{
+position:fixed;
+top:0;
+left:0;
+width:90%;
+height:100%;
+background:#0a0a0a;
+display:none;
+padding:20px;
+z-index:999;
+
+}
+
+#detail img{
+width:100%;
+height:210px;
+border-radius:20px;
+
+}
+
+/* POPUP */
+#popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.popup-box{
+background:#111;
+padding:20px;
+border-radius:15px;
+width:90%;
+max-width:350px;
+text-align:center;
+}
+
+.popup-buttons{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.popup-buttons button{
+flex:1;
+padding:10px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+.cancel{background:#333;color:white;}
+.proceed{background:var(--gold);}
+
+input,textarea,select{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+border:none;
+background:#1c1c1c;
+color:white;
+}
+
+footer{
+margin-top:40px;
+border-top:1px solid #222;
+padding:20px;
+}
+.footer-link{
+color:#ccc;
+cursor:pointer;
+margin-bottom:10px;
+}
+
+h2 {
+  text-align: center;
+  text-align: center;
+  /* 1. Define the metallic colors */
+  background: linear-gradient(
+    to bottom, 
+    #BF953F, 
+    #FCF6BA, 
+    #B38728, 
+    #FBF5B7, 
+    #AA771C
+  );
+  
+  /* 2. Clip the background to the text shape */
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  /* 3. Make the actual text transparent so the background shows through */
+  color: transparent;
+  
+  /* 4. Optional: Add a subtle shadow for depth */
+  filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.3));
+  
+  /* 5. Typography settings */
+  font-weight: bold;
+  display: inline-block;
+font-family: 'Playfair Display', serif;
+  
+}
+/* Container to center everything on the page/section */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Horizontal centering */
+  justify-content: center; /* Vertical centering */
+  text-align: center;
+  width: 100%;
+}
+
+.english-text {
+  font-family: 'Great Vibes', cursive; /* The new Calligraphy font */
+  font-size: 1.5rem;
+  margin: 0;
+  
+  /* Applying the Gold Effect from before */
+  background: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+  /* Adds depth to the gold */
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+}
+
+.arabic-text {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem; /* Arabic usually needs to be larger than English to look balanced */
+  direction: rtl;
+  margin-bottom: -10px; /* Pulls the English text "yushfa" closer, like in the logo */
+
+  /* The Golden Metallic Effect */
+  background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+  /* Depth shadow */
+  filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));
+}
+#dname {
+  font-family: 'Vernada, Geneva, sans-serif';
+  font-weight: 400; /* Bold but not "heavy" */
+  letter-spacing: 2px; /* Adds a premium, airy feel */
+  text-transform: uppercase;
+  font-size: 20px;
+  
+  /* The Metallic Gold Gradient from your image */
+  background: linear-gradient(to bottom, #fcf3ad, #e2c173, #c5a059, #8e6e36);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+
+#dprice {
+  font-family: 'Vernada, Geneva, sans-serif';
+  font-weight: 200; /* Bold but not "heavy" */
+  letter-spacing: 2px; /* Adds a premium, airy feel */
+  text-transform: uppercase;
+  font-size: 15px;
+  
+  /* The Metallic Gold Gradient from your image */
+  background: linear-gradient(to bottom, #fcf3ad, #e2c173, #c5a059, #8e6e36);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+  
+  /* 3. Clip the background to the text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block; /* Required for the gradient to show correctly */
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo" onclick="go('home')"></div>
+</header>
+
+<!-- HOME -->
+
+
+<div id="home" class="view active">
+  
+<div title="click" class="cat-card" onclick="go('menu')">
+  
+<img src="IMAGES/DONE (1).jpg">
+</div>
+
+<div class="logo-container">
+  <h1 class="arabic-text">السلام عليكم</h1>
+  <br>
+  <p class="english-text">Peace Be Upon You</p>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<footer>
+<div class="footer-link" onclick="go('about')">About Us</div>
+<div class="footer-link" onclick="go('contact')">Contact</div>
+</footer>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="view">
+<div class="back" onclick="go('home')"> Back</div>
+<div class="grid" id="products"></div>
+</div>
+
+<!-- CART -->
+<div id="cart" class="view">
+<div class="back" onclick="go('menu')"> Back</div>
+
+<h2>Your Order</h2>
+<div id="cartItems"></div>
+
+<textarea id="notes" placeholder="Notes..."></textarea>
+<input id="address" placeholder="Delivery address">
+
+<select id="delivery">
+<option value="0">Delivery Fee</option>
+<option value="100">Nearby</option>
+<option value="250">City</option>
+<option value="400">Far</option>
+</select>
+
+<h3>Total: KES <span id="total">0</span></h3>
+
+<button class="btn" onclick="showPopup()">Place Order</button>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="view">
+<div class="back" onclick="go('home')"> Back</div> 
+<br>
+<h2>About Us</h2>
+<p>We create natural organic products with care and quality ingredients.</p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="view">
+<div class="back" onclick="go('home')"> Back</div>
+<br>
+<h2>Contact</h2>
+<p>0713802224</p>
+</div>
+
+<!-- DETAIL -->
+<div id="detail">
+<div class="back" onclick="closeDetail()">Back</div>
+<img id="dimg">
+<h2 id="dname"></h2>
+<p id="dprice"></p>
+<p id="ddesc"></p>
+
+<div>
+<button onclick="changeQty(currentId,-1)">−</button>
+<span id="dqty">0</span>
+<button onclick="changeQty(currentId,1)">+</button>
+</div>
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+<div class="popup-box">
+<h3>Continue to WhatsApp</h3>
+<p>Your order will be sent via WhatsApp to complete your purchase. Please make sure to add your delivery address in the order details, you will be charged delivery according tk address or you can arrange pick-up.<br> Thank you.</p>
+
+<div class="popup-buttons">
+<button class="cancel" onclick="hidePopup()">Cancel</button>
+<button class="proceed" onclick="checkout()">Proceed</button>
+</div>
+</div>
+</div>
+
+<!-- FLOAT -->
+<div class="float" onclick="go('cart')">
+🛒 <div class="badge" id="count">0</div>
+</div>
+ 
+ 
+  <!-- PRODUCT CATEGORY START-->
+<!-- JAVASCRIPT-->
+<script>
+const products=[
+{id:1,name:"HYPERTENSION",price:800,desc:"",img:"IMAGES/1.png"},
+
+{id:2,name:"BLOOD SUGAR",price:800,desc:"",img:"IMAGES/2.png"},
+
+{id:3,name:"HORMONAL BALANCE",price:800,desc:"",img:"IMAGES/3.png"},
+
+
+{id:4,name:"OVERALL WELLBEING",price:800,desc:"",img:"IMAGES/4.png"},
+
+
+{id:5,name:"INFLAMMATION & BLOATING",price:800,desc:"",img:"IMAGES/5.jpg"},
+
+
+{id:6,name:"SKIN",price:800,desc:"",img:"IMAGES/6.jpg"},
+
+{id:7,name:"SLEEP & RELAXATION",price:800,desc:"",img:"IMAGES/1.png"}
+];
+  
+  
+  <!--PRODUCT CATEGORY END-->
+  
+  
+let cart={},currentId=null;
+
+function go(id){
+document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+if(id==='menu') loadProducts();
+if(id==='cart') updateCart();
+}
+
+function loadProducts(){
+let html='';
+products.forEach(p=>{
+let qty=cart[p.id]||0;
+html+=`
+<div class="card">
+<img src="${p.img}" onclick="openDetail(${p.id})">
+<h4>${p.name}</h4>
+<p>KES ${p.price}</p>
+<div class="qty">
+<button onclick="changeQty(${p.id},-1)">−</button>
+<span>${qty}</span>
+<button onclick="changeQty(${p.id},1)">+</button>
+</div>
+</div>`;
+});
+productsEl.innerHTML=html;
+}
+
+function changeQty(id,val){
+cart[id]=(cart[id]||0)+val;
+if(cart[id]<=0) delete cart[id];
+loadProducts();
+updateCart();
+if(currentId===id) dqty.innerText=cart[id]||0;
+}
+
+function updateCart(){
+let html='',total=0,count=0;
+
+for(let id in cart){
+let p=products.find(x=>x.id==id);
+let qty=cart[id];
+total+=p.price*qty;
+count+=qty;
+
+html+=`
+<div class="cart-card">
+<img src="${p.img}" onclick="openDetail(${p.id})">
+<div>${p.name} x${qty}</div>
+<div class="cart-actions">
+<button onclick="changeQty(${p.id},-1)">−</button>
+<button onclick="changeQty(${p.id},1)">+</button>
+</div>
+</div>`;
+}
+
+cartItems.innerHTML=html;
+totalEl.innerText=total+Number(delivery.value||0);
+countEl.innerText=count;
+}
+
+function openDetail(id){
+currentId=id;
+let p=products.find(x=>x.id==id);
+dimg.src=p.img;
+dname.innerText=p.name;
+dprice.innerText="KES "+p.price;
+ddesc.innerText=p.desc;
+dqty.innerText=cart[id]||0;
+detail.style.display='block';
+}
+
+function closeDetail(){detail.style.display='none';}
+
+function showPopup(){
+if(Object.keys(cart).length===0) return alert("Cart is empty");
+popup.style.display="flex";
+}
+
+function hidePopup(){popup.style.display="none";}
+
+function checkout(){
+hidePopup();
+
+let msg="*NEW ORDER*%0A";
+let total=0;
+
+for(let id in cart){
+let p=products.find(x=>x.id==id);
+let qty=cart[id];
+total+=p.price*qty;
+msg+=`- ${p.name} x${qty}%0A`;
+}
+
+total+=Number(delivery.value||0);
+
+msg+=`%0ATotal: KES ${total}%0AAddress: ${address.value}%0ANotes: ${notes.value}`;
+
+window.open(`https://wa.me/254713802224?text=${msg}`,'_blank');
+}
+
+const productsEl=document.getElementById('products');
+const cartItems=document.getElementById('cartItems');
+const totalEl=document.getElementById('total');
+const countEl=document.getElementById('count');
+</script>
+
+</body>
+</html>
