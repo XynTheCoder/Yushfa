@@ -371,6 +371,15 @@ font-family: 'Playfair Display', serif;
 }
 
 
+.paragraph {
+  color: white;
+  
+}
+
+.class {
+  color: white;
+  }
+
 </style>
 </head>
 
@@ -444,8 +453,8 @@ font-family: 'Playfair Display', serif;
 <br>
 <h2>What Is Yushfa?</h2>
   <br>
-  <h5>Yushfa | يشفى = Allah | الله Heals</h5>
-<p> <br> <br> Herbal solutions to improve health. <br>
+  <h5 class="class">Yushfa | يشفى = Allah | الله Heals</h5>
+<p class="paragraph"> <br> <br> Herbal solutions to improve health. <br>
   100% <em>Natural</em>, no preservatives or additives. <br>
   Consult doctor before adjusting medication... <br>
   Maintain consistency and a healthy lifestyle for optimal results. <br>
@@ -625,6 +634,7 @@ msg+=`- ${p.name} x${qty}%0A`;
 total+=Number(delivery.value||0);
 
 msg+=`%0ATotal: KES ${total}%0AAddress: ${address.value}%0ANotes: ${notes.value}`;
+  
 
 window.open(`https://wa.me/254713802224?text=${msg}`,'_blank');
 }
