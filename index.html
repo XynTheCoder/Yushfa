@@ -369,19 +369,20 @@ font-family: 'Playfair Display', serif;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block; /* Required for the gradient to show correctly */
+  
 }
 
 
 .paragraph {
-  color: white;
-  font-family: 'Vernada, Geneva, sans-serif';
+  color: #ccc;
+  font-family: 'inter', sans-serif;
   letter-spacing: 2px;
   
 }
 
 .class {
   color: white;
-  font-family: 'Vernada, Geneva, sans-serif';
+  font-family: 'Cinzel', serif;
   letter-spacing: 2px;
   }
 
@@ -650,8 +651,18 @@ msg+=`%0ATotal: KES ${total}%0AAddress: ${address.value}%0ANotes: ${notes.value}
   
 
 window.open(`https://wa.me/254713802224?text=${msg}`,'_blank');
+
+  alert("Order Sent Successfully!");
+
+    cart = {};
+  notes.value = "";
+  address.value = "0";
+
+  updateCart();
+  go('home');
 }
 
+  
 const productsEl=document.getElementById('products');
 const cartItems=document.getElementById('cartItems');
 const totalEl=document.getElementById('total');
