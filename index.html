@@ -390,7 +390,7 @@ font-family: 'Playfair Display', serif;
 
 .paragraph {
   color: #ccc;
-  font-family: 'inter', sans-serif;
+  font-family: 'Cinzel', serif;
   letter-spacing: 2px;
   
 }
@@ -453,15 +453,19 @@ font-family: 'Playfair Display', serif;
 <h2>Your Order</h2>
 <div id="cartItems"></div>
 
-<textarea id="notes" placeholder="Notes..."></textarea>
-<input id="address" placeholder="Delivery address">
+<textarea id="notes" placeholder="Add any special Notes..."></textarea>
+<input id="address" placeholder="Please Add Your Specific Delivery address">
 
+<!-- THIS IS THE LOCATION OPTION
+  
 <select id="delivery">
 <option value="0">Delivery Fee</option>
 <option value="100">Nearby</option>
 <option value="250">City</option>
 <option value="400">Far</option>
 </select>
+-->
+  
 
 <h3>Total: KES <span id="total">0</span></h3>
 
@@ -503,7 +507,14 @@ font-family: 'Playfair Display', serif;
 <br>
 <h2>Contact</h2>
 <p> Any questions? <br>
-  <br> Email: mmoyushfa@gmail.com </p>
+  <br> </p>
+
+  <h3>Email:</h3>
+    <a href="mailto:mmoyushfa@gmail.com">Email Us</a>
+ <a href="https://wa.me/254713802224?text="> WhatsApp Us</a>
+  <h3>WhatsApp Us:</h3>
+  
+  
 </div>
 
 <!-- DETAIL -->
@@ -525,7 +536,9 @@ font-family: 'Playfair Display', serif;
 <div id="popup">
 <div class="popup-box">
 <h3>Continue to WhatsApp</h3>
-<p>Your order will be sent via WhatsApp to complete your purchase. Please make sure to add your delivery address in the order details, you will be charged delivery according tk address or you can arrange pick-up.<br> Thank you.</p>
+<p>Your order will be sent via WhatsApp to complete your purchase.
+  Please make sure to add your <strong><em>delivery address</em></strong> and optional Notes in the order details, you will be charged delivery according to address or you can arrange pick-up.<br>
+  Thank you.</p>
 
 <div class="popup-buttons">
 <button class="cancel" onclick="hidePopup()">Cancel</button>
